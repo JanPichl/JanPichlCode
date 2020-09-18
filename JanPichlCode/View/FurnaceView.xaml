@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="JanPichlCode.View.FurnaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:JanPichlCode.ViewModel"
+             mc:Ignorable="d"
+             d:DesignHeight="184"
+             d:DesignWidth="104"
+             d:DataContext="{d:DesignInstance vm:FurnaceViewModel, IsDesignTimeCreatable=True}">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Assets/MergedResources.xaml" />
+    </UserControl.Resources>
+
+    <Grid  Background="{StaticResource ApplicationBackgroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85*" />
+            <ColumnDefinition Width="15*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--Číslo pece-->
+            <Grid Grid.Row="0">
+                <ContentControl Style="{StaticResource  BorderContentStyle}"
+                                Content="{Binding FurnaceNumberStr}" />
+            </Grid>
+
+            <!--Druh materiálu-->
+            <Grid Grid.Row="1">
+                <ContentControl Style="{StaticResource  BorderContentStyle}"
+                                Content="{Binding Material}" />
+            </Grid>
+
+            <!--Požadovaná teplota-->
+            <Grid Grid.Row="2">
+                <ContentControl Style="{StaticResource TemperatureContentStyle}"
+                                Content="{Binding DesiredTemperatureStr}"
+                                Tag="{Binding IsDesiredTemperatureNok}">
+                </ContentControl>
+            </Grid>
+
+            <!--Skutečná teplota-->
+            <Grid Grid.Row="3">
+                <ContentControl Style="{StaticResource TemperatureContentStyle}"
+                                Content="{Binding TemperatureStr}"
+                                Tag="{Binding IsActualTemperatureNok}">
+                </ContentControl>
+            </Grid>
+
+            <!--Stav naplnění border-->
+            <Grid Grid.Row="4"
+                  Grid.RowSpan="5">
+                <Border Style="{StaticResource FurnaceViewDefaultBorder}" />
+            </Grid>
+
+            <!--Stav naplnění V-->
+            <Grid Grid.Row="4">
+                <Grid Margin="7,7,7,1"
+                      Visibility="Hidden" />
+            </Grid>
+
+            <!--Stav naplnění IV -->
+            <Grid Grid.Row="5">
+                <Grid Margin="7,1,7,1"
+                      Visibility="Hidden" />
+            </Grid>
+
+            <!--Stav naplnění III -->
+            <Grid Grid.Row="6">
+                <Grid Margin="7,1,7,1"
+                      Visibility="Hidden" />
+                <Viewbox Stretch="Uniform"
+                         StretchDirection="Both"
+                         Margin="7">
+                    <TextBlock Text="{Binding FillPercentageStr, Mode=OneWay}"
+                               Style="{StaticResource TextLevel5}" />
+                </Viewbox>
+            </Grid>
+
+            <!--Stav naplnění II -->
+            <Grid Grid.Row="7">
+                <Grid Margin="7,1,7,1"
+                      Visibility="Hidden" />
+            </Grid>
+
+            <!--Stav naplnění I -->
+            <Grid Grid.Row="8">
+                <Grid Margin="7,1,7,7"
+                      Visibility="Hidden" />
+            </Grid>
+
+            <!--Material request-->
+            <Grid Grid.Row="4"
+                  Grid.RowSpan="5">
+                <ContentControl Style="{StaticResource MaterialContentStyle}"
+                                Content="MAT."
+                                Tag="{Binding IsMaterialRequired}">
+                </ContentControl>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Viewbox Stretch="Uniform"
+                     StretchDirection="Both">
+                <TextBlock Text="{Binding LastUpdate, StringFormat='dd/MM/yy   HH:mm:ss', FallbackValue='Aktualizace' ,TargetNullValue='Chyba'}"
+                           Style="{StaticResource TextLevel5}"
+                           FontWeight="Normal"
+                           FontSize="20"
+                           RenderTransformOrigin="0.5,0.5"
+                           VerticalAlignment="Stretch"
+                           HorizontalAlignment="Stretch"
+                           TextAlignment="Right">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="270" />
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Viewbox>
+
+        </Grid>
+
+    </Grid>
+</UserControl>
+

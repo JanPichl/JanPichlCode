@@ -1,0 +1,133 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors.xaml" />
+        <ResourceDictionary Source="Texts.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Storyboard x:Key="TemperatureWarningStoryBoard"
+                x:Name="TemperatureWarningStoryBoard">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="Background.Color"
+                                      Duration="0:0:3"
+                                      BeginTime="0:0:0"
+                                      FillBehavior="HoldEnd"
+                                      RepeatBehavior="Forever">
+            <ColorAnimationUsingKeyFrames.KeyFrames>
+                <DiscreteColorKeyFrame  Value="{StaticResource TemperatureLowColor1}"
+                                        KeyTime="0:0:0.0" />
+                <DiscreteColorKeyFrame  Value="{StaticResource TemperatureLowColor2}"
+                                        KeyTime="0:0:1" />
+            </ColorAnimationUsingKeyFrames.KeyFrames>
+        </ColorAnimationUsingKeyFrames>
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground.Color"
+                                      Duration="0:0:3"
+                                      BeginTime="0:0:0"
+                                      FillBehavior="HoldEnd"
+                                      RepeatBehavior="Forever">
+
+            <ColorAnimationUsingKeyFrames.KeyFrames>
+                <DiscreteColorKeyFrame   Value="{StaticResource  ApplicationForegroundColor}"
+                                         KeyTime="0:0:0.0" />
+                <DiscreteColorKeyFrame  Value="{StaticResource ApplicationErrorColor}"
+                                        KeyTime="0:0:1" />
+            </ColorAnimationUsingKeyFrames.KeyFrames>
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="MaterialRequestStoryBoard"
+                x:Name="MaterialRequestStoryBoard">
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility"
+                                       Duration="0:0:3"
+                                       BeginTime="0:0:0"
+                                       FillBehavior="HoldEnd"
+                                       RepeatBehavior="Forever">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                    Value="{x:Static Visibility.Hidden}" />
+            <DiscreteObjectKeyFrame KeyTime="0:0:1"
+                                    Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Style x:Key="FurnaceViewDefaultBorder"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="{StaticResource  ApplicationForeground}" />
+        <Setter Property="CornerRadius"
+                Value="3" />
+        <Setter Property="Margin"
+                Value="3" />
+    </Style>
+
+
+    <DataTemplate x:Key="BorderTemplate">
+        <Border Style="{StaticResource FurnaceViewDefaultBorder}">
+            <Border Margin="2"
+                    CornerRadius="3"
+                    Background="{Binding Background, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentControl}}}">
+                <Viewbox  Stretch="Uniform"
+                          StretchDirection="Both">
+                    <TextBlock Text="{Binding Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentControl}}, Mode=OneWay}"
+                               Style="{StaticResource TextLevel6}"
+                               Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentControl}}}">
+                    </TextBlock>
+                </Viewbox>
+            </Border>
+        </Border>
+    </DataTemplate>
+
+    <Style x:Key="BorderContentStyle"
+           TargetType="{x:Type ContentControl}">
+        <Setter Property="ContentTemplate"
+                Value="{StaticResource BorderTemplate}" />
+        <Setter Property="Foreground"
+                Value="{StaticResource ApplicationForeground}" />
+        <Setter Property="Background"
+                Value="Transparent" />
+    </Style>
+
+    <Style x:Key="TemperatureContentStyle"
+           BasedOn="{StaticResource BorderContentStyle}"
+           TargetType="{x:Type ContentControl}">
+        <Style.Triggers>
+            <DataTrigger  Binding="{Binding Tag, RelativeSource={RelativeSource Self} }"
+                          Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="temperatureWarningStoryBoard"
+                                     Storyboard="{StaticResource  TemperatureWarningStoryBoard}" />
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="temperatureWarningStoryBoard" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MaterialContentStyle"
+           BasedOn="{StaticResource BorderContentStyle}"
+           TargetType="{x:Type ContentControl}">
+
+        <Setter Property="Background"
+                Value="{StaticResource  MaterialWarnBrush}" />
+        <Setter Property="Foreground"
+                Value="{StaticResource ApplicationErrorBrush}" />
+
+        <Setter Property="Visibility"
+                Value="Hidden" />
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}"
+                         Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="materialRequestStoryBoard"
+                                     Storyboard="{StaticResource  MaterialRequestStoryBoard}" />
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="materialRequestStoryBoard" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,144 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="ApplicationBackgroundBrush"
+                     Color="#FF333333" />
+
+    <Color x:Key="ApplicationForegroundColor">#FFFFFF</Color>
+    <SolidColorBrush x:Key="ApplicationForeground"
+                     Color="{StaticResource ApplicationForegroundColor}" />
+
+    <SolidColorBrush x:Key="ApplicationInverseForegroundBrush"
+                     Color="Black" />
+
+    <Color x:Key="ApplicationErrorColor">#CC1700</Color>
+    <SolidColorBrush x:Key="ApplicationErrorBrush"
+                     Color="{StaticResource ApplicationErrorColor}" />
+
+    <Color x:Key="TemperatureLowColor1">Transparent</Color>
+    <Color x:Key="TemperatureLowColor2">Gold</Color>
+
+    <SolidColorBrush x:Key="MaterialWarnBrush"
+                     Color="{StaticResource TemperatureLowColor2}" />
+
+    <LinearGradientBrush x:Key="EventOkBrush"
+                         StartPoint="0.5,0.0"
+                         EndPoint="0.5,1.0">
+        <GradientStop Color="#00C416"
+                      Offset="0" />
+        <GradientStop Color="#00FF19"
+                      Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="EventErrorBrush"
+                         StartPoint="0.5,0.0"
+                         EndPoint="0.5,1.0">
+        <GradientStop Color="#CC1700"
+                      Offset="0" />
+        <GradientStop Color="#FF3700"
+                      Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="EventSwitchingBrush"
+                         StartPoint="0.5,0.0"
+                         EndPoint="0.5,1.0">
+        <GradientStop Color="#2054CC"
+                      Offset="0" />
+        <GradientStop Color="#2865FF"
+                      Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="FurnaceLevel5Brush"
+                         StartPoint="0.5,0.0"
+                         EndPoint="0.5,1.0">
+        <GradientStop Color="#CC1700"
+                      Offset="0" />
+        <GradientStop Color="#FF3700"
+                      Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="FurnaceLevel4Brush"
+                         StartPoint="0.5,0.0"
+                         EndPoint="0.5,1.0">
+        <GradientStop Color="#95CC00"
+                      Offset="0" />
+        <GradientStop Color="#BBFF00"
+                      Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="FurnaceLevel3Brush"
+                         StartPoint="0.5,0.0"
+                         EndPoint="0.5,1.0">
+        <GradientStop Color="#C1CC00"
+                      Offset="0" />
+        <GradientStop Color="#F2FF00"
+                      Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="FurnaceLevel2Brush"
+                         StartPoint="0.5,0.0"
+                         EndPoint="0.5,1.0">
+        <GradientStop Color="#CC7A00"
+                      Offset="0" />
+        <GradientStop Color="#FF9400"
+                      Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="FurnaceLevel1Brush"
+                         StartPoint="0.5,0.0"
+                         EndPoint="0.5,1.0">
+        <GradientStop Color="#CC1700"
+                      Offset="0" />
+        <GradientStop Color="#FF3700"
+                      Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- default-->
+    <SolidColorBrush Color="Transparent"
+                     x:Key="Mat0Brush" />
+
+    <!-- slitina AL 226/ADC12-->
+    <SolidColorBrush Color="#FFFF00"
+                     x:Key="Mat1Brush" />
+
+    <!-- slitina ALSi9Cu3(B54)-->
+    <SolidColorBrush Color="#FFFF00"
+                     x:Key="Mat2Brush" />
+
+    <!-- slitina AL DIN 1725/230 D-->
+    <SolidColorBrush Color="#FFFFFF"
+                     x:Key="Mat3Brush" />
+
+    <!-- slitina AL DIN 1725/230 K-->
+    <SolidColorBrush Color="#FFFFFF"
+                     x:Key="Mat4Brush" />
+
+    <!-- slitina AL DIN 1725/231-->
+    <SolidColorBrush Color="#00BFFF"
+                     x:Key="Mat5Brush" />
+
+    <!-- slitina AL DIN 1725/233-->
+    <SolidColorBrush Color="#00FF00"
+                     x:Key="Mat6Brush" />
+
+    <!-- slitina AL DIN 1725/239-->
+    <SolidColorBrush Color="#00FF00"
+                     x:Key="Mat7Brush" />
+
+    <!-- slitina AL AC2B (VALEO)-->
+    <SolidColorBrush Color="#C0C0C0"
+                     x:Key="Mat8Brush" />
+
+    <!-- slitina 5TKALSI7MG0,3	slitina AlSi7Mg0,3-->
+    <SolidColorBrush Color="#991A00"
+                     x:Key="Mat9Brush" />
+
+    <!-- slitina AL SS4263-->
+    <SolidColorBrush Color="#FFA500"
+                     x:Key="Mat10Brush" />
+
+    <!-- slitina 5TKADC12 -->
+    <SolidColorBrush Color="#EE82EE"
+                     x:Key="Mat11Brush" />
+
+</ResourceDictionary>
